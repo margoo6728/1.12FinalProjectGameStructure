@@ -60,6 +60,7 @@ public class Game {
      * Displays the main menu.
      */
     private void displayMenu() {
+    	System.out.println("Please select an option from the menu below:");
         System.out.println();
         System.out.println("========== MAIN MENU ==========");
         System.out.println("1. Create Player");
@@ -148,7 +149,7 @@ public class Game {
         }
 
         System.out.println(player.getName() + " is getting ready for future missions...");
-        System.out.println("This is a placeholder for later gameplay features.");
+        System.out.println("Stay tuned! New adventures coming soon.");
     }
 
     /**
