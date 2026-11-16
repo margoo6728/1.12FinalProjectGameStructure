@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /**
  * Controls the main game flow and menu system.
  *
@@ -8,18 +6,24 @@ import java.util.Scanner;
  * - You will expand this class throughout the project.
  * - Keep major game flow here, and move detailed logic into other classes later.
  */
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
 public class Game {
 
     private Scanner input;
     private Player player;
     private boolean running;
-
+    private ArrayList<Item> inventory;
+    
     /**
      * Constructs the game and prepares required resources.
      */
     public Game() {
         input = new Scanner(System.in);
         running = true;
+        inventory = new ArrayList<>();
     }
 
     /**
@@ -46,6 +50,12 @@ public class Game {
                     runPlaceholderAction();
                     break;
                 case 5:
+                	addInventoryItem();
+                	break;
+                case 6:
+                	viewInventory();
+                	break;
+                case 7:
                     exitGame();
                     break;
                 default:
@@ -67,7 +77,9 @@ public class Game {
         System.out.println("2. Choose Game Theme");
         System.out.println("3. View Player");
         System.out.println("4. Start Placeholder Action");
-        System.out.println("5. Exit");
+        System.out.println("5. Add Inventory Item");
+        System.out.println("6. View Inventory");
+        System.out.println("7. Exit");
         System.out.println("================================");
     }
 
@@ -158,5 +170,50 @@ public class Game {
     private void exitGame() {
         System.out.println("Exiting program. Thanks for playing.");
         running = false;
+    }
+    
+    // Create a Method to Add Inventory Items
+    private void addInventoryItem()
+    {
+    	if (player == null)
+    	{
+    		System.out.println("Create a player first.");
+    		return;
+    	}
+    	
+    	Utils.printHeader("ADD INVENTORY ITEM");
+    	
+    	String name = Utils.readNonEmptyString(input, "Enter item name: ");
+    	String description = Utils.readNonEmptyString(input, "Enter item description: ");
+    	int quantity = Utils.readInt(input, "Enter item quantity: ");
+    	
+    	if (quantity <= 0)
+    	{
+    		System.out.println("Quantity must be greater than zero.");
+    		return;
+    	}
+      		Item item = new Item(name, description, quantity);
+    		
+    		inventory.add(item);
+    		
+    		System.out.println("Item added successfully!");
+    	}
+    
+    
+    // Create a Method to Display Inventory Items
+    private void viewInventory()
+    {
+    	Utils.printHeader("INVENTORY");
+    	
+    	if (inventory.isEmpty())
+    	{
+    		System.out.println("Your inventory is empty.");
+    		return;
+    	}
+    	
+    	for (int i = 0; i < inventory.size(); i++)
+    	{
+    		System.out.println(inventory.get(i).getSummary());
+    	}
     }
 }
