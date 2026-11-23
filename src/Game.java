@@ -199,7 +199,6 @@ public class Game {
     		System.out.println("Item added successfully!");
     	}
     
-    
     // Create a Method to Display Inventory Items
     private void viewInventory()
     {

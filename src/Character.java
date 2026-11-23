@@ -32,4 +32,9 @@ public class Character {
     public String getSummary() {
         return "Character: " + name + " | Power: " + power;
     }
-}
+    
+    // Create a Method for Character's Actions
+    public void performAction() {
+    	System.out.println(name + " performs an action.");
+    }
+ }
