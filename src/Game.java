@@ -16,6 +16,7 @@ public class Game {
     private Player player;
     private boolean running;
     private ArrayList<Item> inventory;
+    private ArrayList<Character> party;
     
     /**
      * Constructs the game and prepares required resources.
@@ -24,6 +25,7 @@ public class Game {
         input = new Scanner(System.in);
         running = true;
         inventory = new ArrayList<>();
+        party = new ArrayList<>();
     }
 
     /**
@@ -56,6 +58,9 @@ public class Game {
                 	viewInventory();
                 	break;
                 case 7:
+                    addCharacter();
+                    break;
+                case 8:
                     exitGame();
                     break;
                 default:
@@ -79,7 +84,8 @@ public class Game {
         System.out.println("4. Start Placeholder Action");
         System.out.println("5. Add Inventory Item");
         System.out.println("6. View Inventory");
-        System.out.println("7. Exit");
+        System.out.println("7. Add Character");
+        System.out.println("8. Exit");
         System.out.println("================================");
     }
 
@@ -214,5 +220,53 @@ public class Game {
     	{
     		System.out.println(inventory.get(i).getSummary());
     	}
+    }
+    
+    // Create a Method to Add Characters
+    private void addCharacter() {
+    	if (player == null)
+    	{
+    		System.out.println("Create a player first.");
+    		return;
+    	}
+    	
+    	Utils.printHeader("ADD  CHARACTER");
+    	
+    	System.out.println("1. Warrior");
+    	System.out.println("2. Hacker");
+    	System.out.println("3. Explorer");
+    	
+    	int choice = Utils.readInt(input,  "Choose character type: ");
+    	
+    	if (choice < 1 || choice > 3)
+    	{
+    		System.out.println("Invalid character type.");
+    		return;
+    	}
+    	
+    	String name = Utils.readNonEmptyString(input, "Enter character name: ");
+    	int power = Utils.readInt(input,  "Enter character power: ");
+   
+    
+    	Character character;
+    	
+    	switch (choice)
+    	{
+    	case 1: 
+    		character = new Warrior(name, power);
+    		break;
+    	case 2:
+    		character = new Hacker(name, power);
+    		break;
+    	case 3:
+    		character = new Explorer(name, power);
+    		break;
+    	default:
+    		return;
+    }
+    
+    party.add(character);
+    
+    System.out.println("Character added successfully!");
     }
 }
