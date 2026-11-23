@@ -5,5 +5,10 @@ public class Explorer extends Character {
 	public Explorer(String name, int power) {
 		super(name, power);
 	}
-
+	
+	// Override Character Action
+	@Override
+	public void performAction() {
+		System.out.println(getName() + " discovers a mysterious artifact!");
+	}
 }

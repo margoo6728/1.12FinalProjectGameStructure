@@ -5,5 +5,10 @@ public class Warrior extends Character {
 	public Warrior(String name, int power) {
 		super(name, power);
 	}
-
+	
+	// Override Character Action
+	@Override
+	public void performAction() {
+		System.out.println(getName() + " performs a special attack!");
+	}
 }
