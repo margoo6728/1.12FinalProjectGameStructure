@@ -2,9 +2,16 @@
  * Controls the main game flow and menu system.
  *
  * Student Notes:
- * - This class handles the main menu and user choices.
- * - You will expand this class throughout the project.
- * - Keep major game flow here, and move detailed logic into other classes later.
+ * - Handles the main menu and user selections.
+ * - Uses a while loop to keep the game running until the user exits.
+ * - Uses a switch statement to execute the selected menu option.
+ * - Manages player creation, theme selection, and player information.
+ * - Uses an ArrayList<Item> to store and display inventory items.
+ * - Uses an ArrayList<Character> to store multiple character types.
+ * - Allows users to create and display Warrior, Hacker, and Explorer objects.
+ * - Demonstrates polymorphism by executing overridden performAction() methods.
+ * - Uses separate methods to organize game functionality.
+ * - This class will continue to expand throughout the project.
  */
 
 import java.util.Scanner;
@@ -61,6 +68,12 @@ public class Game {
                     addCharacter();
                     break;
                 case 8:
+                    viewCharacters();
+                    break;
+                case 9:
+                    performCharacterActions();
+                    break;
+                case 10:
                     exitGame();
                     break;
                 default:
@@ -85,7 +98,9 @@ public class Game {
         System.out.println("5. Add Inventory Item");
         System.out.println("6. View Inventory");
         System.out.println("7. Add Character");
-        System.out.println("8. Exit");
+        System.out.println("8. View Characters");
+        System.out.println("9. Perform Character Actions");
+        System.out.println("10. Exit");
         System.out.println("================================");
     }
 
@@ -268,5 +283,33 @@ public class Game {
     party.add(character);
     
     System.out.println("Character added successfully!");
+    }
+    
+    // Create a Method to Display Characters
+    private void viewCharacters() {
+    	Utils.printHeader("CHARACTERS");
+    	
+    	if (party.isEmpty()) {
+    		System.out.println("No characters have been added. ");
+    		return;
+    	}
+    	
+    	for (int i = 0; i < party.size(); i++) {
+    		System.out.println(party.get(i).getSummary());
+    	}
+    }
+    
+    // Create a Method to Perform Character Actions
+    private void performCharacterActions() {
+    	Utils.printHeader("CHARACTER ACTIONS");
+    	
+    	if (party.isEmpty()) {
+    		System.out.println("No characters have been added.");
+    		return;
+    	}
+    	
+    	for (int i = 0; i < party.size(); i++) {
+    		party.get(i).performAction();
+    	}
     }
 }

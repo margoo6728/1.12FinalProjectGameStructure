@@ -1,3 +1,13 @@
+/**
+ * Represents an explorer in the Space Explorer theme.
+ *
+ * Student Notes:
+ * - This subclass extends the Character parent class.
+ * - Inherits the character attributes and accessible methods.
+ * - Uses super() to call the parent class constructor.
+ * - Overrides performAction() to discover a mysterious artifact.
+ * - Demonstrates inheritance and polymorphism.
+ */
 
 public class Explorer extends Character {
 	

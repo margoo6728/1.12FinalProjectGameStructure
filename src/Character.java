@@ -1,8 +1,15 @@
 /**
  * Represents a character in the game.
  *
- * Programmers will expand this class in later weeks.
+ * Student Notes:
+ * - Serves as the parent class for all character subclasses.
+ * - Defines common character attributes and methods.
+ * - Uses getters and setters to access and modify attributes.
+ * - Provides the performAction() method for subclasses to override.
+ * - Allows different character types to be referenced as Character.
+ * - Supports inheritance, encapsulation, and polymorphism.
  */
+
 public class Character {
 
     private String name;

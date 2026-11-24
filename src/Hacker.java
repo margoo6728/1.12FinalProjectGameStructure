@@ -1,3 +1,13 @@
+/**
+ * Represents a hacker in the Cyber Hacker theme.
+ *
+ * Student Notes:
+ * - This subclass extends the Character parent class.
+ * - Inherits the character attributes and accessible methods.
+ * - Uses super() to call the parent class constructor.
+ * - Overrides performAction() to hack into a security system.
+ * - Demonstrates inheritance and polymorphism.
+ */
 
 public class Hacker extends Character {
 	
